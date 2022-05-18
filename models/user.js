@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bycrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const validator = require('validator');
-
+const crypto = require('node:crypto');
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -25,7 +25,8 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Password is required'],
         trim: true,
         minlength: [8, 'Password must be atleast 8 characters long'],
-        maxlength: [20, 'Password must be less than 20 characters long']
+        // maxlength: [20, 'Password must be less than 20 characters long'],
+        select: false
     },
     role:{
         type: String,
@@ -45,7 +46,7 @@ const UserSchema = new mongoose.Schema({
         }
     },
     ForgotpasswordToken:  String,
-    passwordResetExpires: Date,
+    ForgotpasswordExpires: Date,
     createdAt: {
         type: Date,
         default: Date.now
@@ -68,7 +69,7 @@ UserSchema.methods.getjwtToken = function(){
 UserSchema.methods.getForgotpasswordToken = function(){
     const token = crypto.randomBytes(20).toString('hex');
     this.ForgotpasswordToken = crypto.createHash('sha256').update(token).digest('hex');
-    this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+    this.ForgotpasswordExpires = Date.now() + 10 * 60 * 1000;
     return token;
 }
 

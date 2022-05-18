@@ -8,19 +8,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Register !</title>
+    <title>Login !</title>
   </head>
   <body class="bg-dark text-white">
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-4 offset-md-4">
-          <h1>Register</h1>
-          <form action="/api/v1/users/signup" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="exampleInputname">name</label>
-              <input type="text" class="form-control" id="exampleInputname" placeholder="Enter name" name="name">
-             
-            </div>
+          <h1>Login</h1>
+          <form action="/api/v1/users/signin" method="post" enctype="multipart/form-data">
+            
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
@@ -30,10 +26,7 @@
               <label for="exampleInputPassword1">Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
             </div>
-            <div class="form-group">
-              <label for="exampleInputimage">Image</label>
-              <input type="file" class="form-control" id="exampleInputfile" placeholder="" name="photo">
-            </div>
+            
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
