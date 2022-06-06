@@ -4,6 +4,8 @@ const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose')
 const userroute = require('./routes/user');
+const productroute = require('./routes/product');
+const orderroute = require('./routes/order');
 const morgan = require('morgan');
 require('dotenv').config();
 app.use(express.json());
@@ -18,5 +20,6 @@ app.use(fileUpload({
 app.set('view engine', 'ejs');
 
 app.use('/api/v1/users' ,userroute)
-
+app.use('/api/v1/products', productroute)
+app.use('/api/v1/order', orderroute)
 module.exports = app;
