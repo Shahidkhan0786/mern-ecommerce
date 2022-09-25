@@ -12,7 +12,7 @@ const sendmail = async (options) => {
           user: process.env.EMAIL_USER,
           pass: process.env.EMAIL_PASS 
         //   user: "shahidkhan0085200@gmail.com",
-        //   pass: "haji78600##**"
+        //   pass: ""
         }
       });
     const message ={
