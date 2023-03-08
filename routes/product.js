@@ -7,10 +7,16 @@ router.route('/').get(index);
 router.route('/getproduct').get(getProduct);
 
 //admin route
-router.route('/addproduct').post(isLoggedin,customRole('admin'),addProduct)
-router.route('/admingetallproduct').get(isLoggedin ,customRole('admin'),admingetallproduct)
-router.route('/adminupdateproduct').put(isLoggedin ,customRole('admin'),adminupdateProduct)
-router.route('/admindelproduct').delete(isLoggedin ,customRole('admin'),admindelproduct)
+// router.route('/addproduct').post(isLoggedin,customRole('admin'),addProduct)
+// router.route('/admingetallproduct').get(isLoggedin ,customRole('admin'),admingetallproduct)
+// router.route('/adminupdateproduct').put(isLoggedin ,customRole('admin'),adminupdateProduct)
+// router.route('/admindelproduct').delete(isLoggedin ,customRole('admin'),admindelproduct)
+
+//admin route
+router.route('/addproduct').post(addProduct)
+router.route('/admingetallproduct').get(admingetallproduct)
+router.route('/adminupdateproduct').put(adminupdateProduct)
+router.route('/admindelproduct').delete(admindelproduct)
 
 
 
