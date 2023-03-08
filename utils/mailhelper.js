@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const { options } = require('../routes/user');
 
 const sendmail = async (options) => {
-
+    console.log(process.env);
     // create reusable transporter object using the default SMTP transport
     var transport = nodemailer.createTransport({
         host:   process.env.EMAIL_HOST,

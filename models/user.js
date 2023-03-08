@@ -64,7 +64,7 @@ UserSchema.methods.isValidatepassword = async function(password){
 }
 
 UserSchema.methods.getjwtToken = function(){
-    return jwt.sign({_id: this._id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
+    return jwt.sign({_id: this._id}, process.env.JWT_SECRET, {expiresIn: 172800000});
 }
 UserSchema.methods.getForgotpasswordToken = function(){
     const token = crypto.randomBytes(20).toString('hex');
