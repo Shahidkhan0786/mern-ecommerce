@@ -26,11 +26,19 @@ exports.signup = Bigpromise(async (req, res, next) => {
     const {name , email , password} = req.body;
     
     if(!name || !email || !password){
-        return next(new customerror('name , email , password are required', 400));
+        // return next(new customerror('name , email , password are required', 400));
+        return res.status(400).json({
+            "status":false,
+            "message":"name , email , password are required" 
+        })
     }
     const user = await User.findOne({email});
     if(user){
-        return next(new customerror('user already exists', 400));
+        // return next(new customerror('user already exists', 400));
+        return res.status(400).json({
+            "status":false,
+            "message":"user already exists" 
+        })
     }
     
     if(req.files){
@@ -62,15 +70,28 @@ exports.signup = Bigpromise(async (req, res, next) => {
 exports.signin = Bigpromise(async (req , res ,next) =>{
     const {email , password} = req.body;
     if(!email || !password){
-        return next(new customerror("Please provide email and password" ,400));
+        // return next(new customerror("Please provide email and password" ,400));
+        return res.status(400).json({
+            "status":false,
+            "message":"Please provide email and password" 
+        })
+
     }
     const user = await User.findOne({email}).select('+password');
     if(!user){
-        return next(new customerror("Invalid email or password" ,400));
+        // return next(new customerror("Invalid email or password" ,400));
+        return res.status(400).json({
+            "status":false,
+            "message":"Please provide correct email and password" 
+        })
     }
     const isMatch = await user.isValidatepassword(password);
     if(!isMatch){
-        return next(new customerror("Invalid email or password" ,400));
+        // return next(new customerror("Invalid email or password" ,400));
+        return res.status(400).json({
+            "status":false,
+            "message":"Please provide correct email and password" 
+        })
     }
     cookietoken(user, res);
 });
