@@ -53,6 +53,8 @@ exports.signup = Bigpromise(async (req, res, next) => {
             secure_url: result.secure_url
         }
     });
+    newUser.password = undefined
+    newUser.photo= undefined
     cookietoken(newUser, res);
 });
 
