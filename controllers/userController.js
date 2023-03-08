@@ -121,9 +121,12 @@ exports.forgotpassword = Bigpromise(async (req, res, next) => {
     await user.save({
         validateBeforeSave: false
     });
-    const url = `${req.protocol}://${req.get("host")}/api/v1/users/password/reset/${token}`;
-    const message = `copy paste this link to reset your password \n\n ${url}`;
-    const html = `<p>copy paste this link to reset your password</p><a href=${url}>click me</a>`;
+    // const url = `${req.protocol}://${req.get("host")}/api/v1/users/password/reset/${token}`;
+    const url =  token;
+    // const message = `copy paste this link to reset your password \n\n ${url}`;
+    // const html = `<p>copy paste this link to reset your password</p><a href=${url}>click me</a>`;
+    const message = `copy this token\n\n ${url}`;
+    const html = `<p>copy paste this token in reset form</p><h2>copy me</h2> <h1>${url}</h1>`;
     try{
         await sendmail({
             
